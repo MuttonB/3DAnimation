@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: floralwhite;
+    }
+
+    .main {
+        height: 240px;
+        width: 240px;
+        margin: 80px auto;
+        position: relative;
+        perspective: 8800px;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transform: rotateX(-30deg) rotateY(30deg);
+        animation: move 5s alternate infinite ease-in-out;
+    }
+
+    .small {
+        height: 100px;
+        width: 100px;
+        margin: 0px auto;
+        position: relative;
+        top: 250px;
+        perspective: 8800px;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transform: rotateX(-30deg) rotateY(30deg);
+        animation: move1 3s alternate infinite ease-in-out
+    }
+
+    [class^=box] {
+        border: 8px solid black;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        opacity: 0.7;
+        transition-duration: 1.8s;
+        border-radius: 20px;
+        box-shadow: 0 0 10px 3px black;
+    }
+
+    /* 前 */
+    .box1 {
+        background-color: darkcyan;
+        transform: translateZ(140px);
+    }
+
+    /* 后 */
+    .box2 {
+        background-color: darkblue;
+        transform: translateZ(-140px);
+    }
+
+    /* 上 */
+    .box3 {
+        background-color: rebeccapurple;
+        transform: translateY(-140px) rotateX(90deg);
+    }
+
+    /* 下 */
+    .box4 {
+        background-color: brown;
+        transform: translateY(140px) rotateX(90deg);
+    }
+
+    /* 左 */
+    .box5 {
+        background-color: midnightblue;
+        transform: translateX(-140px) rotateY(90deg);
+    }
+
+    /* 右 */
+    .box6 {
+        background-color: lightslategrey;
+        transform: translateX(140px) rotateY(90deg);
+    }
+
+    @keyframes move {
+        to {
+            transform: rotateY(600deg) rotateX(1200deg);
+        }
+    }
+
+    @keyframes move1 {
+        to {
+            transform: rotateX(1200deg) rotateY(1200deg);
+        }
+    }
+
+    /* 大盒子 */
+    .main:hover .box1 {
+        transform: translateZ(180px);
+    }
+
+    .main:hover .box2 {
+        transform: translateZ(-180px);
+    }
+
+    .main:hover .box3 {
+        margin-top: -40px;
+    }
+
+    .main:hover .box4 {
+        margin-top: 40px;
+    }
+
+    .main:hover .box5 {
+        margin-left: -60px;
+    }
+
+    .main:hover .box6 {
+        margin-left: 60px;
+    }
+
+    .aaa {
+        font-size: 34px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 170px;
+        animation-name: font;
+        animation-duration: 5s;
+        animation-fill-mode: forwards;
+        animation-delay: 5s;
+    }
+
+    @keyframes font {
+        from {
+            transform: rotate(-720deg);
+        }
+
+        to {
+            font-size: 46px;
+            color: darkblue;
+        }
+    }
+
+    /*  */
+    .boo {
+        opacity: 0;
+        animation-name: showthis;
+        animation-duration: 2.8s;
+        animation-delay: 5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes showthis {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .loading {
+        box-shadow: 0 0 8px 0 black;
+        border-radius: 18px;
+        height: 36px;
+        width: 580px;
+        margin: 0 auto;
+        position: relative;
+        top: 260px;
+        animation-delay: 4s;
+        animation-name: loading;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+    }
+
+    .l1 {
+        height: 100%;
+        background-color: cadetblue;
+        border-radius: 18px;
+        opacity: 0;
+        width: 0;
+        animation-name: l1;
+        animation-duration: 3.8s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+    }
+
+    .loading p {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 50px;
+        color: teal;
+    }
+
+    @keyframes l1 {
+        to {
+            width: 100%;
+            opacity: 1;
+        }
+    }
+
+    @keyframes loading {
+        to {
+            opacity: 0
+        }
+    }
+
+    /* 小盒子 */
+    /* 上 */
+    .boxc {
+        transform: translateY(-50px) rotateX(90deg);
+    }
+
+    /* 下 */
+    .boxd {
+        transform: translateY(50px) rotateX(90deg);
+    }
+
+    /* 左 */
+    .boxe {
+        transform: translateX(-50px) rotateY(90deg);
+    }
+
+    /* 右 */
+    .boxf {
+        transform: translateX(50px) rotateY(90deg);
+    }
+
+    /* 前 */
+    .boxa {
+        transform: translateZ(50px);
+    }
+
+    /* 后 */
+    .boxb {
+        transform: translateZ(-50px);
+    }
+
+    .small [class^=box] {
+        background-color: khaki;
+    }
+</style>
+
+<body>
+    <div class="loading">
+        <div class="l1"></div>
+        <p>Loading...</p>
+    </div>
+    <div class="boo">
+        <div class="small">
+            <div class="boxa"></div>
+            <div class="boxb"></div>
+            <div class="boxc"></div>
+            <div class="boxd"></div>
+            <div class="boxe"></div>
+            <div class="boxf"></div>
+        </div>
+        <div class="main">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+            <div class="box4"></div>
+            <div class="box5"></div>
+            <div class="box6"></div>
+        </div>
+        <p class="aaa">BOXES</p>
+    </div>
+</body>
+
+</html>
